@@ -12,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 public class ClientBovoyagesServices {
 
 	public static String[] getAllRegions() {
-		String domaine = "http://Localhost:9080/bovoyages3-WS/";
+		String domaine = "http://localhost:9080/Bovoyages3-WS/";
 		String uri = domaine + "rest/destination/regions";
 
 		Client client = ClientBuilder.newClient();
