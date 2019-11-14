@@ -22,7 +22,7 @@ public class ClientBovoyagesServices {
 	}
 	
 	public static List<Destination> getAllDestinations() {
-		String domaine = "http://Localhost:9080/bovoyages3-WS/";
+		String domaine = "http://localhost:9080/Bovoyages3-WS/";
 		String uri = domaine + "rest/destination/all";
 
 		Client client = ClientBuilder.newClient();
@@ -32,7 +32,7 @@ public class ClientBovoyagesServices {
 	}
 	
 	public static List<DatesVoyages> getAllDates(long id) {
-		String domaine = "http://Localhost:9080/bovoyages3-WS/";
+		String domaine = "http://localhost:9080/Bovoyages3-WS/";
 		String uri = domaine + "rest/destination/date/"+id;
 
 		Client client = ClientBuilder.newClient();
@@ -43,7 +43,7 @@ public class ClientBovoyagesServices {
 	
 	public static String addVoyage(String region, String descriptif, DatesVoyages dv, fr.gtm.bovoyages.Client cl, List<Voyageur> voyageurs ) {
 		Voyage v = new Voyage(region, descriptif, (long)0 , dv, cl, voyageurs);
-		String domaine = "http://localhost:9080/bovoyages3-WS/";
+		String domaine = "http://localhost:9080/Bovoyages3-WS/";
 		String uri = domaine + "rest/voyage/add";
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target(uri);
@@ -52,7 +52,7 @@ public class ClientBovoyagesServices {
 	}
 	
 	public static String commanderVoyage(long id) {
-		String domaine = "http://Localhost:9080/bovoyages3-WS/";
+		String domaine = "http://localhost:9080/Bovoyages3-WS/";
 		String uri = domaine + "rest/voyage/commander/"+id;
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target(uri);
@@ -66,7 +66,7 @@ public class ClientBovoyagesServices {
 	}
 	
 	public static List<Voyageur> modifierVoyageur(long id) {
-		String domaine = "http://Localhost:9080/bovoyages3-WS/";
+		String domaine = "http://localhost:9080/Bovoyages3-WS/";
 		String uri = domaine + "rest/voyage/editvoyageurs/"+id;
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target(uri);

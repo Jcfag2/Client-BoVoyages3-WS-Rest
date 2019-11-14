@@ -1,36 +1,28 @@
 package fr.gtm.bovoyages;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
-
+import java.util.Date;
 
 
 
 public class DatesVoyages implements Serializable{
 
 	private Long id;
-	@JsonDeserialize(using = LocalDateDeserializer.class)
-	@JsonSerialize(using = LocalDateSerializer.class)
-	private LocalDateTime dateAller;
-	@JsonDeserialize(using = LocalDateDeserializer.class)
-	@JsonSerialize(using = LocalDateSerializer.class)
-	private LocalDateTime dateRetour;
+
+	private Date dateAller;
+
+	private Date dateRetour;
 	private double tarifUnitaireHT;
 	private double nbPlaces;
 	
 	public DatesVoyages() {}
 
-	public DatesVoyages(LocalDateTime dateAller, LocalDateTime dateRetour) {
+	public DatesVoyages(Date dateAller, Date dateRetour) {
 		this.dateAller = dateAller;
 		this.dateRetour = dateRetour;
 	}
 
-	public DatesVoyages(Long id, LocalDateTime dateAller, LocalDateTime dateRetour, double tarifUnitaireHT, double nbPlaces) {
+	public DatesVoyages(Long id, Date dateAller, Date dateRetour, double tarifUnitaireHT, double nbPlaces) {
 		super();
 		this.id = id;
 		this.dateAller = dateAller;
@@ -39,7 +31,7 @@ public class DatesVoyages implements Serializable{
 		this.nbPlaces = nbPlaces;
 	}
 	
-	public DatesVoyages(LocalDateTime dateAller, LocalDateTime dateRetour, double tarifUnitaireHT, double nbPlaces) {
+	public DatesVoyages(Date dateAller, Date dateRetour, double tarifUnitaireHT, double nbPlaces) {
 		this.dateAller = dateAller;
 		this.dateRetour = dateRetour;
 		this.tarifUnitaireHT = tarifUnitaireHT;
@@ -54,19 +46,19 @@ public class DatesVoyages implements Serializable{
 		this.id = id;
 	}
 
-	public LocalDateTime getDateAller() {
+	public Date getDateAller() {
 		return dateAller;
 	}
 
-	public void setDateAller(LocalDateTime dateAller) {
+	public void setDateAller(Date dateAller) {
 		this.dateAller = dateAller;
 	}
 
-	public LocalDateTime getDateRetour() {
+	public Date getDateRetour() {
 		return dateRetour;
 	}
 
-	public void setDateRetour(LocalDateTime dateRetour) {
+	public void setDateRetour(Date dateRetour) {
 		this.dateRetour = dateRetour;
 	}
 
