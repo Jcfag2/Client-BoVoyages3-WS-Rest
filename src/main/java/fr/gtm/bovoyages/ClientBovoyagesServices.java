@@ -63,6 +63,15 @@ public class ClientBovoyagesServices {
 			return "Plus de place disponibles, la commande n'a pas été effectuée";
 		}
 		
+	}
+	
+	public static List<Voyageur> modifierVoyageur(long id) {
+		String domaine = "http://Localhost:9080/bovoyages3-WS/";
+		String uri = domaine + "rest/voyage/editvoyageurs/"+id;
+		Client client = ClientBuilder.newClient();
+		WebTarget target = client.target(uri);
+		Voyageur[] voyageurs = target.request(MediaType.APPLICATION_JSON).get(Voyageur[].class);
+		return Arrays.asList(voyageurs);
 		
 	}
 	
