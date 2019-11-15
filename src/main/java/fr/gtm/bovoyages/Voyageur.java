@@ -1,7 +1,7 @@
 package fr.gtm.bovoyages;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -16,12 +16,12 @@ public class Voyageur implements Serializable{
 	private String prenom;
 	@JsonDeserialize(using = LocalDateDeserializer.class)
 	@JsonSerialize(using = LocalDateSerializer.class)
-	private LocalDateTime dateNaissance;
+	private LocalDate dateNaissance;
 	private long id;
 	
 	public Voyageur() {}
 
-	public Voyageur(String civilite, String nom, String prenom, LocalDateTime dateNaissance, long id,
+	public Voyageur(String civilite, String nom, String prenom, LocalDate dateNaissance, long id,
 			List<fr.gtm.bovoyages.Voyage> voyages) {
 		super();
 		this.civilite = civilite;
@@ -55,11 +55,11 @@ public class Voyageur implements Serializable{
 		this.prenom = prenom;
 	}
 
-	public LocalDateTime getDateNaissance() {
+	public LocalDate getDateNaissance() {
 		return dateNaissance;
 	}
 
-	public void setDateNaissance(LocalDateTime dateNaissance) {
+	public void setDateNaissance(LocalDate dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
 

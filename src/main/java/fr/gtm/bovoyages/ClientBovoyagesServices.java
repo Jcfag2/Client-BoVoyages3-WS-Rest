@@ -31,14 +31,14 @@ public class ClientBovoyagesServices {
 		return Arrays.asList(destinations);
 	}
 	
-	public static List<DatesVoyages> getAllDates(long id) {
+	public static DatesVoyages[] getAllDates(long id) {
 		String domaine = "http://localhost:9080/Bovoyages3-WS/";
 		String uri = domaine + "rest/destination/date/"+id;
 
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target(uri);
 		DatesVoyages[] dates = target.request(MediaType.APPLICATION_JSON).get(DatesVoyages[].class);
-		return Arrays.asList(dates);
+		return dates;
 	}
 	
 	public static String addVoyage(String region, String descriptif, DatesVoyages dv, fr.gtm.bovoyages.Client cl, List<Voyageur> voyageurs ) {

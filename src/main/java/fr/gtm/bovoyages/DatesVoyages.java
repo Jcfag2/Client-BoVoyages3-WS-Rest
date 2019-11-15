@@ -1,28 +1,33 @@
 package fr.gtm.bovoyages;
 
 import java.io.Serializable;
-import java.util.Date;
-
+import java.time.LocalDate;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 
 public class DatesVoyages implements Serializable{
 
-	private Long id;
-
-	private Date dateAller;
-
-	private Date dateRetour;
+	private long id;
+	@JsonDeserialize(using = LocalDateDeserializer.class)
+	@JsonSerialize(using = LocalDateSerializer.class)
+	private LocalDate dateAller;
+	@JsonDeserialize(using = LocalDateDeserializer.class)
+	@JsonSerialize(using = LocalDateSerializer.class)
+	private LocalDate dateRetour;
 	private double tarifUnitaireHT;
 	private double nbPlaces;
 	
 	public DatesVoyages() {}
 
-	public DatesVoyages(Date dateAller, Date dateRetour) {
+	public DatesVoyages(LocalDate dateAller, LocalDate dateRetour) {
 		this.dateAller = dateAller;
 		this.dateRetour = dateRetour;
 	}
 
-	public DatesVoyages(Long id, Date dateAller, Date dateRetour, double tarifUnitaireHT, double nbPlaces) {
+	public DatesVoyages(long id, LocalDate dateAller, LocalDate dateRetour, double tarifUnitaireHT, double nbPlaces) {
 		super();
 		this.id = id;
 		this.dateAller = dateAller;
@@ -31,14 +36,14 @@ public class DatesVoyages implements Serializable{
 		this.nbPlaces = nbPlaces;
 	}
 	
-	public DatesVoyages(Date dateAller, Date dateRetour, double tarifUnitaireHT, double nbPlaces) {
+	public DatesVoyages(LocalDate dateAller, LocalDate dateRetour, double tarifUnitaireHT, double nbPlaces) {
 		this.dateAller = dateAller;
 		this.dateRetour = dateRetour;
 		this.tarifUnitaireHT = tarifUnitaireHT;
 		this.nbPlaces = nbPlaces;
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -46,19 +51,19 @@ public class DatesVoyages implements Serializable{
 		this.id = id;
 	}
 
-	public Date getDateAller() {
+	public LocalDate getDateAller() {
 		return dateAller;
 	}
 
-	public void setDateAller(Date dateAller) {
+	public void setDateAller(LocalDate dateAller) {
 		this.dateAller = dateAller;
 	}
 
-	public Date getDateRetour() {
+	public LocalDate getDateRetour() {
 		return dateRetour;
 	}
 
-	public void setDateRetour(Date dateRetour) {
+	public void setDateRetour(LocalDate dateRetour) {
 		this.dateRetour = dateRetour;
 	}
 
@@ -84,7 +89,7 @@ public class DatesVoyages implements Serializable{
 		int result = 1;
 		result = prime * result + ((dateAller == null) ? 0 : dateAller.hashCode());
 		result = prime * result + ((dateRetour == null) ? 0 : dateRetour.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
 		long temp;
 		temp = Double.doubleToLongBits(nbPlaces);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -112,10 +117,7 @@ public class DatesVoyages implements Serializable{
 				return false;
 		} else if (!dateRetour.equals(other.dateRetour))
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
+		if (id != other.id)
 			return false;
 		if (Double.doubleToLongBits(nbPlaces) != Double.doubleToLongBits(other.nbPlaces))
 			return false;
@@ -123,6 +125,7 @@ public class DatesVoyages implements Serializable{
 			return false;
 		return true;
 	}
-	
+
+
 	
 }
