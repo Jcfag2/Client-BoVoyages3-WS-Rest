@@ -23,6 +23,15 @@ public class Voyage implements Serializable{
 		this.client = client;
 		this.voyageurs = voyageurs;
 	}
+	
+	public Voyage(String region, String descriptif, DatesVoyages dv, Client client, List<Voyageur> voyageurs) {
+		super();
+		this.region = region;
+		this.descriptif = descriptif;
+		this.dv = dv;
+		this.client = client;
+		this.voyageurs = voyageurs;
+	}
 
 	public String getRegion() {
 		return region;

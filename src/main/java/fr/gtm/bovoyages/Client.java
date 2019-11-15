@@ -12,6 +12,10 @@ public class Client implements Serializable{
 		this.nom = nom;
 		this.id = id;
 	}
+	public Client(String nom) {
+		this.nom = nom;
+	}
+
 
 	public String getNom() {
 		return nom;

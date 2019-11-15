@@ -30,6 +30,22 @@ public class Voyageur implements Serializable{
 		this.dateNaissance = dateNaissance;
 		this.id = id;
 	}
+	public Voyageur(long id, String civilite, String nom, String prenom, LocalDate dateNaissance) {
+		super();
+		this.id = id;
+		this.civilite = civilite;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+	}
+	
+	public Voyageur(String civilite, String nom, String prenom, LocalDate dateNaissance) {
+		super();
+		this.civilite = civilite;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+	}
 
 	public String getCivilite() {
 		return civilite;

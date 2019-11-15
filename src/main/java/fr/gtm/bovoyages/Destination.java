@@ -8,6 +8,7 @@ public class Destination implements Serializable{
 	private String region;
 	private String descriptif;
 	private String images;
+	private int deleted;
 	
 	public Destination() {}
 
@@ -16,6 +17,12 @@ public class Destination implements Serializable{
 		this.region = region;
 		this.descriptif = descriptif;
 		this.images = images;
+	}
+	public Destination(String region, String descriptif, String images, int deleted) {
+		this.region = region;
+		this.descriptif = descriptif;
+		this.images = images;
+		this.deleted = deleted;
 	}
 
 	public Long getId() {
@@ -50,10 +57,13 @@ public class Destination implements Serializable{
 		this.images = images;
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + deleted;
 		result = prime * result + ((descriptif == null) ? 0 : descriptif.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((images == null) ? 0 : images.hashCode());
@@ -70,6 +80,8 @@ public class Destination implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Destination other = (Destination) obj;
+		if (deleted != other.deleted)
+			return false;
 		if (descriptif == null) {
 			if (other.descriptif != null)
 				return false;
@@ -91,6 +103,14 @@ public class Destination implements Serializable{
 		} else if (!region.equals(other.region))
 			return false;
 		return true;
+	}
+
+	public int getDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(int deleted) {
+		this.deleted = deleted;
 	}
 	
 	
